@@ -114,7 +114,7 @@ h2 {
 }
 
 .container {
-  margin: 40px auto;
+  margin: 40px auto 75px;
   width: 555px;
   background-color: rgba(255, 255, 255, 0);
 }
@@ -138,7 +138,6 @@ header {
   padding-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
   justify-content: center;
   align-items: center;
   margin-bottom: 90px;
@@ -287,10 +286,9 @@ a {
 }
 
 .illustration {
-  margin: 20px 0;
-  padding: 25px;
+  margin: 90px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -312,16 +310,32 @@ a {
   margin-bottom: -5px;
   font-size: 19px;
 }
+.section-top .text,
+  .section-bottom.text {
+    margin-right: 20px;
+  }
 
-/* @media (min-width:768x) {
-  .illustration {}
+  .section-center .text {
+    margin-left: 20px;
+  }
 
-  /* .section-top {
-    background-image: url(../images/bg-section-top-desktop-1.svg);
-
-  } 
-} */
-
+  .section-top,
+  .section-bottom {
+    position: relative;
+    background-color: var(--pale-blue);
+  }
+  .section-top::before,
+  .section-top::after,
+  .section-bottom::before,
+  .section-bottom::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 @media (max-width:767px) {
   .illustrations {
     width: 320px;
@@ -336,8 +350,57 @@ a {
     margin-top: 30px;
     text-align: center;
   }
-}
+  
+  .section-top,
+  .section-bottom {
+    margin-right: 0;
+  }
 
+  .section-top::before {
+    top: -90px;
+    background-image: url(../images/bg-section-top-mobile-1.svg);
+  }
+
+  .section-top::after {
+    background-image: url(../images/bg-section-bottom-mobile-2.svg);
+    bottom: -390px;
+  }
+  .section-bottom::before {
+    top: -90px;
+    background-image: url(../images/bg-section-top-mobile-1.svg);
+  }
+
+  .section-bottom::after {
+    background-image: url(../images/bg-section-bottom-mobile-2.svg);
+    bottom: -363px;
+  }
+
+  .section-center .text {
+    margin-left: 0;
+    
+  }
+}
+@media (min-width:768px) {
+  .section-top::before {
+    top: -87px;
+    background-image: url(../images/bg-section-top-desktop-1.svg);
+  }
+
+  .section-top::after {
+    background-image: url(../images/bg-section-bottom-desktop-2.svg);
+    bottom: -230px;
+  }
+  .section-bottom::before {
+    top: -87px;
+    background-image: url(../images/bg-section-top-desktop-1.svg);
+  }
+
+  .section-bottom::after {
+    background-image: url(../images/bg-section-bottom-desktop-2.svg);
+    bottom: -210px;
+  }
+  
+}
 /* Sign */
 .container .sign {
   text-align: center;
@@ -354,6 +417,7 @@ footer {
   background-color: var(--cyan-900);
   color: white;
   padding: 10px;
+  position: relative;
 }
 
 footer .footer-content {
@@ -363,14 +427,72 @@ footer .footer-content {
   justify-content: center;
   align-items: center;
 }
+footer::before {
+  
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
+@media (max-width:499px) {
+  footer::before {
+    top: -48px;
+    background-image: url(../images/bg-footer-top-mobile.svg);
+  }
+}
+
+@media (min-width:500px) and (max-width:767px) {
+  footer::before {
+    top: -70px;
+    background-image: url(../images/bg-footer-top-mobile.svg);
+  }
+}
 
 @media (min-width:992px) {
   footer .footer-content {
     width: 755px;
   }
 }
-
+@media (min-width:768px) and (max-width:836px) {
+  footer::before {
+    top: -85px;
+    background-image: url(../images/bg-footer-top-desktop.svg);
+  }
+}
+@media (min-width:837px) and (max-width:991px) {
+  footer::before {
+    top: -93px;
+    background-image: url(../images/bg-footer-top-desktop.svg);
+  }
+}
+@media (min-width:992px) and (max-width:1199px) {
+  footer::before {
+    top: -104px;
+    background-image: url(../images/bg-footer-top-desktop.svg);
+  }
+}
+@media (min-width:1200px) and (max-width:1300) {
+  footer::before {
+    top: -133px;
+    background-image: url(../images/bg-footer-top-desktop.svg);
+  }
+}
+@media (min-width:1301px) and (max-width:1384) {
+  footer::before {
+    top: -142px;
+    background-image: url(../images/bg-footer-top-desktop.svg);
+  }
+}
+@media (min-width:1385px)  {
+  footer::before {
+    top: -156px;
+    background-image: url(../images/bg-footer-top-desktop.svg);
+  }
+}
 footer .newsletter {
   width: 320px;
   display: flex;
@@ -490,8 +612,6 @@ footer span {
 footer span img {
   margin-right: 25px;
 }
-
-
 
 footer .attribution {
   width: 310px;
